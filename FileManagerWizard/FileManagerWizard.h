@@ -15,7 +15,7 @@ class FileManagerWizard {
 
     public:
         FileManagerWizard(const char* filename);
-        void loadFile();
+        std::vector<std::string> loadFile();
         void printFile();
 };
 

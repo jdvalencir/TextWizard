@@ -15,7 +15,7 @@ bool FileManagerWizard::fileExists(const std::string& filepath) {
     return fs::exists(filepath);
 }
 
-void FileManagerWizard::loadFile() {
+std::vector<std::string> FileManagerWizard::loadFile() {
     std::string path = filename;
     if (fileExists(path)) {
         // Compression::decompress(path);
@@ -25,8 +25,9 @@ void FileManagerWizard::loadFile() {
             lines.push_back(line);
         }
         file.close();
+        return lines;
     } else {
-        std::cout << "Archivo no encontrado." << std::endl;
+        return {""};
     }
 }
 
