@@ -1,5 +1,5 @@
 #include "FileManagerWizard.h"
-// #include "Compression/Compression.h"
+#include "../Compression/Compression.h"
 
 #include <iostream>
 #include <fstream>
@@ -18,21 +18,23 @@ bool FileManagerWizard::fileExists(const std::string& filepath) {
 std::vector<std::string> FileManagerWizard::loadFile() {
     std::string path = filename;
     if (fileExists(path)) {
-        // Compression::decompress(path);
-        std::ifstream file(path);
-        std::string line;
-        while (getline(file, line)) {
-            lines.push_back(line);
-        }
-        file.close();
+        lines = Compression::decompress(path);
         return lines;
     } else {
-        return {""};
+        std::cout << "File not found." << std::endl;
+        return {};
     }
 }
+
 
 void FileManagerWizard::printFile() {
     for (const auto& line : lines) {
         std::cout << line << std::endl;
     }
 }
+
+void FileManagerWizard::saveCompressedFile(const std::vector<std::string>& lines, const std::string& outputPath) {
+    Compression::compress(lines, outputPath);
+}
+
+

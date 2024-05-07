@@ -17,6 +17,7 @@ class FileManagerWizard {
         FileManagerWizard(const char* filename);
         std::vector<std::string> loadFile();
         void printFile();
+        void saveCompressedFile(const std::vector<std::string>& lines, const std::string& outputPath);
 };
 
 #endif // FILEMANAGERWIZARD_H
