@@ -1,2 +1,2 @@
 prueba: VisorWizard/VisorWizard.cpp TextWizard.cpp
-	g++ VisorWizard/VisorWizard.cpp TextWizard.cpp -lncurses -o prueba
+	g++ FileManagerWizard/FileManagerWizard.cpp VisorWizard/VisorWizard.cpp TextWizard.cpp -lncurses -o prueba
